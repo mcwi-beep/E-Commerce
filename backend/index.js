@@ -10,7 +10,14 @@ const cors = require('cors');
 const { log } = require('console');
 
 app.use(express.json());
-app.use(cors());
+const corsConfig = {
+    origin: "*",
+    credential: true,
+    methods: ["GET", "POST", "PUT", "DELETE"],
+};
+
+app.options("", cors(corsConfig))
+app.use(cors(corsConfig));
 
 // console.log(process.env.DATABASE_URL)
 
