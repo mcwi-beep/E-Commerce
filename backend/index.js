@@ -263,24 +263,45 @@ app.get('/allproducts', async(req, res)=>{
 
 // Image Storage Engine
 
+// const storage = multer.diskStorage({
+//     destination: './upload/images',
+//     filename: (req, file, cb)=>{
+//        return cb(null, `${file.fieldname}_${Date.now()}_${path.extname(file.originalname)}`)
+//     }
+// });
+
+// const upload = multer({storage: storage})
+
+// // Creating upload endpoint for images
+// app.use('/images', express.static('upload/images'));
+
+// app.post("/upload",upload.single('product'), (req,res)=>{
+//     res.json({
+//         success:1,
+//         image_url:`http://localhost:${port}/images/${req.file.filename}`
+//     })
+// });
+
 const storage = multer.diskStorage({
-    destination: './upload/images',
-    filename: (req, file, cb)=>{
-       return cb(null, `${file.fieldname}_${Date.now()}_${path.extname(file.originalname)}`)
-    }
-});
-
-const upload = multer({storage: storage})
-
-// Creating upload endpoint for images
-app.use('/images', express.static('upload/images'));
-
-app.post("/upload",upload.single('product'), (req,res)=>{
+    destination: function (req, file, cb) {
+      cb(null, '/tmp/upload'); // Use /tmp for temporary file storage
+    },
+    filename: function (req, file, cb) {
+      cb(null, `${file.fieldname}_${Date.now()}_${path.extname(file.originalname)}`);
+    },
+  });
+  
+  const upload = multer({ storage: storage });
+  
+  // Creating an endpoint for serving images
+  app.use('/images', express.static('/tmp/upload'));
+  
+  app.post('/upload', upload.single('product'), (req, res) => {
     res.json({
-        success:1,
-        image_url:`http://localhost:${port}/images/${req.file.filename}`
-    })
-});
-
+      success: 1,
+      image_url: `http://localhost:${port}/images/${req.file.filename}`,
+    });
+  });
+  
 // Export the Express app
 module.exports = app;
