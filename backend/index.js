@@ -22,7 +22,12 @@ app.use(cors(corsConfig));
 // console.log(process.env.DATABASE_URL)
 
 // Database Connection with MongoDB
-mongoose.connect(process.env.DATABASE_URL);
+mongoose.connect(process.env.DATABASE_URL).then(() => {
+    console.log('Connected to MongoDB Atlas');
+  })
+  .catch((error) => {
+    console.error('Error connecting to MongoDB Atlas:', error.message);
+  });
 
 // API Creation
 app.get("/", (req, res)=>{
