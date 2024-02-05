@@ -299,7 +299,7 @@ const storage = multer.diskStorage({
   const upload = multer({ storage: storage });
   
   // Creating an endpoint for serving images
-  app.use('/images', express.static('/tmp/upload'));
+//   app.use('/images', express.static('/tmp/upload'));
   
   app.post('/upload', upload.single('product'), (req, res) => {
     res.json({
