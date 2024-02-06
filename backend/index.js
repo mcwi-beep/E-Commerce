@@ -288,9 +288,7 @@ app.get('/allproducts', async(req, res)=>{
 // });
 
 const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-      cb(null, '/tmp/upload'); // Use /tmp for temporary file storage
-    },
+ 
     filename: function (req, file, cb) {
       cb(null, `${file.fieldname}_${Date.now()}_${path.extname(file.originalname)}`);
     },
