@@ -11,7 +11,7 @@ const { log } = require('console');
 
 app.use(express.json());
 const corsConfig = {
-    origin: "*",
+    origin: "https://e-commerce-mern-frontend-vert.vercel.app/",
     credential: true,
     methods: ["GET", "POST", "PUT", "DELETE"],
 };
