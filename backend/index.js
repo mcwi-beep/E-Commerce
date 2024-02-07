@@ -11,7 +11,7 @@ const { log } = require('console');
 
 app.use(express.json());
 const corsConfig = {
-    origin: "https://e-commerce-mern-frontend-vert.vercel.app/",
+    origin: "*",
     credential: true,
     methods: ["GET", "POST", "PUT", "DELETE"],
 };
@@ -22,7 +22,7 @@ app.use(cors(corsConfig));
 // console.log(process.env.DATABASE_URL)
 
 // Database Connection with MongoDB
-mongoose.connect(process.env.DATABASE_URL,  { useNewUrlParser: true, useUnifiedTopology: true }).then(() => {
+mongoose.connect(process.env.DATABASE_URL).then(() => {
     console.log('Connected to MongoDB Atlas');
   })
   .catch((error) => {
