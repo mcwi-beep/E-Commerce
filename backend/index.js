@@ -9,15 +9,24 @@ const path = require('path');
 const cors = require('cors');
 const { log } = require('console');
 
-app.use(express.json());
-const corsConfig = {
-    origin: "*",
-    credential: true,
-    methods: ["GET", "POST", "PUT", "DELETE"],
-};
+const allowedOrigins = [
+    'https://e-commerce-mern-frontend-vert.vercel.app',
+    'https://e-commerce-admin-gamma-nine.vercel.app',
 
-app.options("", cors(corsConfig))
-app.use(cors(corsConfig));
+  ];
+  
+  app.use(cors({
+    origin: function (origin, callback) {
+      // Check if the request origin is included in the allowedOrigins array
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true); // Allow the request
+      } else {
+        callback(new Error('Origin not allowed by CORS')); // Block the request
+      }
+    },
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+  }));
 
 // console.log(process.env.DATABASE_URL)
 
