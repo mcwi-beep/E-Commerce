@@ -8,7 +8,7 @@ const Popular = () => {
   const [popular, setPopular] = useState([]);
 
   useEffect(()=>{
-    fetch('https://e-commerce-api-xi.vercel.app/popularinwomen').then((res)=> res.json()).then((data)=>{setPopular(data)})
+    fetch('https://e-commerce-api.onrender.com/popularinwomen').then((res)=> res.json()).then((data)=>{setPopular(data)})
   },[])
 
   return (
