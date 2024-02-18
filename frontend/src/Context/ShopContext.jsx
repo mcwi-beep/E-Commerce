@@ -16,10 +16,10 @@ const ShopContextProvider = (props) => {
    const [all_product, setAllProducts] = useState([]);
    const [cartItems, setCartItems] = useState(getDefaultCart());
    useEffect(()=>{
-     fetch('https://e-commerce-api-xi.vercel.app/allproducts').then((res)=> res.json()).then((data)=>{setAllProducts(data)})
+     fetch('https://e-commerce-api.onrender.com/allproducts').then((res)=> res.json()).then((data)=>{setAllProducts(data)})
 
      if(localStorage.getItem('auth-token')){
-      fetch('https://e-commerce-api-xi.vercel.app/getcart',{
+      fetch('https://e-commerce-api.onrender.com/getcart',{
        method: 'POST',
        headers:{
          Accept:'application/form-data',
@@ -44,7 +44,7 @@ const ShopContextProvider = (props) => {
   const addToCart = (itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
     if(localStorage.getItem('auth-token')){
-       fetch('https://e-commerce-api-xi.vercel.app/addtocart',{
+       fetch('https://e-commerce-api.onrender.com/addtocart',{
         method: 'POST',
         headers:{
           Accept:'application/form-data',
@@ -60,7 +60,7 @@ const ShopContextProvider = (props) => {
   const removeFromCart = (itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
     if(localStorage.getItem('auth-token')){
-      fetch('https://e-commerce-api-xi.vercel.app/removefromcart',{
+      fetch('https://e-commerce-api.onrender.com/removefromcart',{
        method: 'POST',
        headers:{
          Accept:'application/form-data',
