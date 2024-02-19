@@ -3,21 +3,7 @@
   "builds": [
     { "src": "./index.js", "use": "@vercel/node" }
   ],
-  "routes": [
-    {
-      "src": "/images/(.*)",
-      "dest": "/public/images/$1"
-    },
-    {
-      "src": "/api/(.*)",
-      "dest": "/api/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/$1",
-      "methods": ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"]
-    }
-  ],
+
   "rewrites": [
     {
       "source": "/(.*)",
