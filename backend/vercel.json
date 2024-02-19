@@ -8,7 +8,7 @@
       "sources": "/listproduct",
       "destination": "/"
     }
-  ]
+  ],
   "rewrites": [
     {
       "source": "/(.*)",
