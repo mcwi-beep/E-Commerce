@@ -17,7 +17,7 @@ const LoginSignup = () => {
    const login = async ()=>{
     console.log("Login function executed", formData)
     let responseData;
-    await fetch('https://e-commerce-api.onrender.com/login',{
+    await fetch('https://e-commerce-api-xi.vercel.app/login',{
       method: 'POST',
       headers:{
         Accept: 'application/json',
@@ -37,7 +37,7 @@ const LoginSignup = () => {
    const signup = async ()=>{
     console.log("Signup function executed", formData);
     let responseData;
-    await fetch('https://e-commerce-api.onrender.com/signup',{
+    await fetch('https://e-commerce-api-xi.vercel.app/signup',{
       method: 'POST',
       headers:{
         Accept: 'application/json',
