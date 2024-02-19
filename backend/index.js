@@ -10,7 +10,7 @@ const cors = require('cors');
 const { log } = require('console');
 
 const allowedOrigins = [
-    'https://e-commerce-mern-app-vert.vercel.app',
+    'https://e-commerce-mern-frontend-vert.vercel.app',
     'https://e-commerce-admin-gamma-nine.vercel.app',
 
   ];
