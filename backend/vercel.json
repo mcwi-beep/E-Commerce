@@ -5,14 +5,14 @@
   ],
   "routes": [
     {
-      "sources": "/listproduct",
-      "destination": "/"
+      "src": "/listproduct",
+      "dest": "/"
     }
   ],
   "rewrites": [
     {
-      "source": "/(.*)",
-      "destination": "/"
+      "src": "/(.*)",
+      "dest": "/"
     }
   ]
 }
