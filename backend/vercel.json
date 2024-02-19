@@ -5,7 +5,7 @@
   ],
   "routes": [
     {
-      "sources": "/allproducts",
+      "sources": "/listproduct",
       "destination": "/"
     }
   ]
